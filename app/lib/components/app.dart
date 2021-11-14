@@ -9,15 +9,16 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'TODO app',
-        theme: ThemeData(
-          primarySwatch: Colors.blueGrey,
+      title: 'TODO app',
+      theme: ThemeData(
+        primarySwatch: Colors.blueGrey,
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text("TODO app"),
         ),
-        home: Scaffold(
-          appBar: AppBar(
-            title: const Text("TODO app"),
-          ),
-          body: MyHomePage(),
-        ));
+        body: MyHomePage(),
+      ),
+    );
   }
 }
