@@ -19,6 +19,7 @@ class TodoItem extends StatelessWidget {
         color: Colors.grey,
         onPressed: () {},
       ),
+      onTap: () {},
     );
   }
 }

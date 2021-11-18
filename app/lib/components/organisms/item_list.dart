@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../molecules/item.dart';
+import '../molecules/todo_item.dart';
 
 class ItemList extends StatelessWidget {
   ItemList({Key? key}) : super(key: key);
@@ -7,11 +7,11 @@ class ItemList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: const [
-        TodoItem(todo: "cooking"),
-        TodoItem(todo: "having dinner"),
-      ],
+    return ListView.builder(
+      itemCount: todolist.length,
+      itemBuilder: (context, index) {
+        return TodoItem(todo: todolist[index]);
+      },
     );
   }
 }
