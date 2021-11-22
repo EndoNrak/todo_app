@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import './pages/home.dart';
 
@@ -17,7 +18,7 @@ class App extends StatelessWidget {
         appBar: AppBar(
           title: const Text("TODO app"),
         ),
-        body: MyHomePage(),
+        body: const MyHomePage(),
       ),
     );
   }

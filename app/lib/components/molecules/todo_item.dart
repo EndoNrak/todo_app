@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/models/todo_model.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class TodoItem extends StatelessWidget {
+import '../../main.dart';
+
+class TodoItem extends HookConsumerWidget {
   const TodoItem({Key? key, required this.todo}) : super(key: key);
 
-  final String todo;
+  final TodoModel todo;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return ListTile(
       leading: IconButton(
         icon: const Icon(Icons.local_fire_department),
-        color: Colors.red,
-        onPressed: () {},
+        color: (todo.isDone == false) ? Colors.red : Colors.grey,
+        onPressed: () {
+          ref.read(todoListProvider.notifier).toggleIsDone(todo.id);
+        },
       ),
-      title: Text(todo),
+      title: Text(todo.title),
       trailing: IconButton(
         icon: const Icon(Icons.more_vert),
         color: Colors.grey,

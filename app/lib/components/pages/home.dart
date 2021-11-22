@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../organisms/item_list.dart';
+import '../organisms/todo_list.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -7,7 +7,7 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: ItemList(),
+      child: TodoList(),
     );
   }
 }
