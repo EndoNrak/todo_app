@@ -21,18 +21,22 @@ final todoListProvider =
     TodoModel(
       id: 'todo-0',
       title: "aaaa",
+      description: "aaaaaaaaaaaaaaaaassssssss",
+      deadline: DateTime.utc(2020, 11, 21),
       createdAt: DateTime.utc(2020, 11, 2),
       updatedAt: DateTime.utc(2020, 11, 2),
     ),
     TodoModel(
       id: 'todo-1',
       title: "bbbb",
+      description: "aaaabsssssss",
       createdAt: DateTime.utc(2020, 11, 2),
       updatedAt: DateTime.utc(2020, 11, 2),
     ),
     TodoModel(
       id: 'todo-2',
       title: "cccc",
+      description: "bbbbbbbbbbbbbssss",
       createdAt: DateTime.utc(2020, 11, 2),
       updatedAt: DateTime.utc(2020, 11, 2),
     ),

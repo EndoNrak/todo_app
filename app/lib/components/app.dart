@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import './pages/home.dart';
 
@@ -14,12 +13,7 @@ class App extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("TODO app"),
-        ),
-        body: const MyHomePage(),
-      ),
+      home: const HomePage(),
     );
   }
 }

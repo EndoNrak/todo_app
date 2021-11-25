@@ -3,6 +3,7 @@ import 'package:flutter_app/models/todo_model.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../main.dart';
+import '../pages/edit.dart';
 
 class TodoItem extends HookConsumerWidget {
   const TodoItem({Key? key, required this.todo}) : super(key: key);
@@ -25,7 +26,12 @@ class TodoItem extends HookConsumerWidget {
         color: Colors.grey,
         onPressed: () {},
       ),
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => EditPage(todo.id)),
+        );
+      },
     );
   }
 }

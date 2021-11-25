@@ -41,4 +41,8 @@ class TodoListViewModel extends StateNotifier<List<TodoModel>> {
   void remove(String id) {
     state = state.where((todoItem) => todoItem.id != id).toList();
   }
+
+  TodoModel getTodo(String id) {
+    return state.firstWhere((todo) => todo.id == id);
+  }
 }
