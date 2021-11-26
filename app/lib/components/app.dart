@@ -12,7 +12,10 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'TODO app',
       theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
+        colorScheme: const ColorScheme.dark(
+            primaryVariant: Colors.blueGrey,
+            surface: Color.fromARGB(255, 60, 68, 77),
+            background: Color.fromARGB(255, 7, 13, 43)),
       ),
       home: Scaffold(
         appBar: AppBar(
