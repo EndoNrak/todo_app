@@ -1,9 +1,43 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_app/models/todo_model.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:uuid/uuid.dart';
 
+import '../models/todo_model.dart';
+
 const _uuid = Uuid();
+
+final todoListProvider =
+    StateNotifierProvider<TodoListViewModel, List<TodoModel>>((ref) {
+  return TodoListViewModel([
+    TodoModel(
+      id: 'todo-0',
+      title: "aaaa",
+      description: "aaaaaaaaaaaaaaaaassssssss",
+      deadline: DateTime.utc(2020, 11, 21),
+      createdAt: DateTime.utc(2020, 11, 2),
+      updatedAt: DateTime.utc(2020, 11, 2),
+    ),
+    TodoModel(
+      id: 'todo-1',
+      title: "bbbb",
+      description: "aaaabsssssss",
+      createdAt: DateTime.utc(2020, 11, 2),
+      updatedAt: DateTime.utc(2020, 11, 2),
+    ),
+    TodoModel(
+      id: 'todo-2',
+      title: "cccc",
+      description: "bbbbbbbbbbbbbssss",
+      createdAt: DateTime.utc(2020, 11, 2),
+      updatedAt: DateTime.utc(2020, 11, 2),
+    ),
+    TodoModel(
+      id: 'todo-3',
+      title: "addd",
+      createdAt: DateTime.utc(2020, 11, 2),
+      updatedAt: DateTime.utc(2020, 11, 2),
+    ),
+  ]);
+});
 
 class TodoListViewModel extends StateNotifier<List<TodoModel>> {
   TodoListViewModel(List<TodoModel>? initialTodoList)
@@ -31,6 +65,23 @@ class TodoListViewModel extends StateNotifier<List<TodoModel>> {
             isDone: !todoItem.isDone,
             description: todoItem.description,
             createdAt: todoItem.createdAt,
+            updatedAt: DateTime.now(),
+          )
+        else
+          todoItem,
+    ];
+  }
+
+  void update(TodoModel todo) {
+    state = [
+      for (final todoItem in state)
+        if (todoItem.id == todo.id)
+          TodoModel(
+            id: todoItem.id,
+            title: todo.title,
+            isDone: todo.isDone,
+            description: todo.description,
+            createdAt: todo.createdAt,
             updatedAt: DateTime.now(),
           )
         else

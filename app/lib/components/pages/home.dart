@@ -10,7 +10,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("TODO app"),
       ),
-      body: Center(
+      body: const Center(
         child: TodoList(),
       ),
     );

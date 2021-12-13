@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/models/todo_model.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../main.dart';
+import '../../models/todo_model.dart';
+import '../../view_models/todo_edit_view_model.dart';
+import '../../view_models/todo_list_view_model.dart';
 import '../pages/edit.dart';
 
 class TodoItem extends HookConsumerWidget {
@@ -27,9 +28,10 @@ class TodoItem extends HookConsumerWidget {
         onPressed: () {},
       ),
       onTap: () {
+        ref.read(todoEditProvider.notifier).setTodoEdit(todo);
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => EditPage(todo.id)),
+          MaterialPageRoute(builder: (context) => const EditPage()),
         );
       },
     );
