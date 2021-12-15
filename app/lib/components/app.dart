@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import './pages/home.dart';
 
@@ -17,12 +16,7 @@ class App extends StatelessWidget {
             surface: Color.fromARGB(255, 60, 68, 77),
             background: Color.fromARGB(255, 7, 13, 43)),
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("TODO app"),
-        ),
-        body: const MyHomePage(),
-      ),
+      home: const HomePage(),
     );
   }
 }
