@@ -41,7 +41,7 @@ class TodoEditViewModel extends StateNotifier<TodoModel> {
     state = todo;
   }
 
-  void saveTodo() {
+  void update() {
     todoListProvider.update(state);
   }
 }

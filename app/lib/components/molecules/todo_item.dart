@@ -7,7 +7,7 @@ import '../../view_models/todo_list_view_model.dart';
 import '../pages/edit.dart';
 
 class TodoItem extends HookConsumerWidget {
-  const TodoItem({Key? key, required this.todo}) : super(key: key);
+  TodoItem({Key? key, required this.todo}) : super(key: key);
 
   final TodoModel todo;
 

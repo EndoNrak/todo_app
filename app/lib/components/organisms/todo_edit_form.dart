@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
 import '../../models/todo_model.dart';
 import '../../view_models/todo_edit_view_model.dart';
-import '../../view_models/todo_list_view_model.dart';
 
 @immutable
 class TodoEditForm extends HookConsumerWidget {
@@ -15,7 +15,10 @@ class TodoEditForm extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     todo = ref.watch(todoEditProvider);
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
+      padding: const EdgeInsets.symmetric(
+        vertical: 10,
+        horizontal: 30,
+      ),
       child: Column(
         children: <Widget>[
           TextFormField(
@@ -28,15 +31,22 @@ class TodoEditForm extends HookConsumerWidget {
               }
               return null;
             },
-            onChanged: (value) => todo.title = value,
+            onChanged: (value) {
+              todo.title = value;
+              ref.read(todoEditProvider.notifier).update();
+            },
           ),
           TextFormField(
             decoration: const InputDecoration(
-                icon: Icon(Icons.insert_comment),
-                labelText: "description",
-                border: InputBorder.none),
+              icon: Icon(Icons.insert_comment),
+              labelText: "description",
+              border: InputBorder.none,
+            ),
             initialValue: todo.description,
-            onChanged: (value) => todo.description = value,
+            onChanged: (value) {
+              todo.description = value;
+              ref.read(todoEditProvider.notifier).update();
+            },
           ),
           TextFormField(
             decoration: const InputDecoration(
@@ -46,17 +56,11 @@ class TodoEditForm extends HookConsumerWidget {
             ),
             initialValue: DateFormat('yyyy-MM-dd')
                 .format(todo.deadline ?? DateTime.now()),
-            // onChanged: (value) => todo.deadline = DateTime(value),
           ),
-          ElevatedButton(
-            child: const Text("Save"),
-            onPressed: () {
-              ref.read(todoListProvider.notifier).update(todo);
-              Navigator.pop(context);
-            },
-          )
         ],
       ),
     );
   }
+
+  void dispose() {}
 }
